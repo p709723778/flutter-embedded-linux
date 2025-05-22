@@ -96,7 +96,7 @@ jobs:
         zip -r ../release.zip ./*  
     - name: Create Git Tag
       run: |
-        TAG="v$(date +'%Y.%m.%d')"  # 例如 v2023.12.25
+        TAG="v$(date +'%Y.%m.%d.%H%M%S')"  # 例如 v2023.12.25
         git tag $TAG
         git push origin $TAG
       env:
