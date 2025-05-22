@@ -99,6 +99,9 @@ jobs:
         TAG="v$(date +'%Y.%m.%d')"  # 例如 v2023.12.25
         git tag $TAG
         git push origin $TAG
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
         
     - name: Upload Release Asset
       uses: softprops/action-gh-release@v1
