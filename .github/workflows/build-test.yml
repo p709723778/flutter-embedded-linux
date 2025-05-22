@@ -99,6 +99,7 @@ jobs:
         TAG="release-$(date +'%Y.%m.%d').$(git rev-parse --short HEAD)"
         git tag $TAG
         git push origin $TAG
+        echo "tag=$TAG" >> $GITHUB_OUTPUT
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
