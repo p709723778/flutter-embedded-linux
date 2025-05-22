@@ -90,3 +90,13 @@ jobs:
       working-directory: ${{github.workspace}}/build
       shell: bash
       run: cmake --build . --config $BUILD_TYPE
+    - name: Create ZIP
+        run: |
+          cd ${{github.workspace}}/build
+          zip -r release.zip ./build/
+    - name: Upload Release Asset
+        uses: softprops/action-gh-release@v1
+        with:
+          files: release.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
