@@ -22,10 +22,10 @@ jobs:
     - name: Print Tag
       run: | 
           echo "Tag is: $TAG"  # 直接引用环境变量
-  
+          
     - name: Print Tag
       run: | 
-        echo "Tag steps.tag.outputs.ta is: ${{ steps.tag.outputs.tag }}"
+        echo "Tag steps.tag.outputs.ta is:  ${{ env.TAG }}"# 通过 env 上下文引用
   
     # - name: Install libraries
     #   run: |
