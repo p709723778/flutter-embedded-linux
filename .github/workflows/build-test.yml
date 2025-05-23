@@ -102,7 +102,9 @@ jobs:
         echo "tag=$TAG" >> $GITHUB_OUTPUT
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-
+    - name: Debug Tag
+      run: | 
+        echo "Tag will be: ${{ steps.tag.outputs.tag }}"
         
     - name: Upload Release Asset
       uses: softprops/action-gh-release@v1
