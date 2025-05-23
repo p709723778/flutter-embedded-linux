@@ -13,6 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+
     - name: Generate Tag
       run: |
         TAG="release-$(date +'%Y.%m.%d')"
@@ -20,8 +21,12 @@ jobs:
     
     - name: Print Tag
       run: | 
-        echo "Tag is: $TAG"  # 直接引用环境变量
-      
+          echo "Tag is: $TAG"  # 直接引用环境变量
+  
+    - name: Print Tag
+      run: | 
+        echo "Tag steps.tag.outputs.ta is: ${{ steps.tag.outputs.tag }}"
+  
     # - name: Install libraries
     #   run: |
     #     sudo apt update
@@ -99,21 +104,24 @@ jobs:
     #   working-directory: ${{github.workspace}}/build
     #   shell: bash
     #   run: cmake --build . --config $BUILD_TYPE
+      
     # - name: Create ZIP
     #   run: |
     #     cd ${{github.workspace}}/build
     #     zip -r ../release.zip ./*  
+        
     # - name: Create Git Tag
     #   run: |
     #     TAG="release-$(date +'%Y.%m.%d').$(git rev-parse --short HEAD)"
     #     git tag $TAG
     #     git push origin $TAG
-    #     echo "tag=$TAG" >> $GITHUB_OUTPUT
+    #     echo "TAG=$TAG" >> $GITHUB_ENV # 设置为全局环境变量
     #   env:
     #     GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-    # - name: Debug Tag
+    
+    # - name: Print TagName
     #   run: | 
-    #     echo "Tag will be: ${{ steps.tag.outputs.tag }}"
+    #     echo "Tag is: $TAG"  # 直接引用环境变量
         
     # - name: Upload Release Asset
     #   uses: softprops/action-gh-release@v1
